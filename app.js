@@ -11,13 +11,19 @@ let list = {
         newLI.textContent = text;
 
         // Create a new child element for the delete (x) button
-        let newLiChild = document.createElement('span');
-        newLiChild.textContent = ' x ';
-        newLiChild.classList.add("delete_btn");
+        let deleteBtnChild = document.createElement('span');
+        deleteBtnChild.textContent = ' x ';
+        deleteBtnChild.classList.add("delete_btn");
 
-        // delete button is appended to new list item
+        // Create a new child element for the checkmark
+        let checkMarkChild = document.createElement('span');
+        checkMarkChild.classList.add('checkmark');
+        checkMarkChild.style.visibility = 'hidden';
+
+        // delete button and checkmark are appended to new list item
         // and new list item is appended to the unordered list
-        newLI.appendChild(newLiChild);
+        newLI.appendChild(deleteBtnChild);
+        newLI.appendChild(checkMarkChild);
         ul.appendChild(newLI);
 
         // object with list item's text and completion status is pushed to 
@@ -30,7 +36,7 @@ let list = {
         );        
 
         textBox.value = '';
-        console.log(this.items);
+        // console.log(this.items);
     },
     delete: function(element) {
 
@@ -39,10 +45,10 @@ let list = {
         let itemIndex = this.items.indexOf(this.items.find(function(item){
             return item.content === element.textContent;
         }));
-        
+
         this.items.splice(itemIndex, 1);
         ul.children[itemIndex].remove();
-        console.log(this.items);
+        // console.log(this.items);
     },
     setComplete: function(element){
 
@@ -52,18 +58,22 @@ let list = {
             return item.content === element.textContent;
         });
         item.complete = !item.complete;
-        
+        // console.log(element.childNodes);
+
         // completed items turn green but the x
         // button remains the same
+        // When complete is true, the green checkmark becomes visible
         // if not completed, the item turns black again
         if (item.complete) {
             element.style.color = 'green';
             element.childNodes[1].style.color = 'black';
+            element.childNodes[2].style.visibility = 'visible';
         }
         else {
             element.style.color = 'black';
+            element.childNodes[2].style.visibility = 'hidden';
         }
-        console.log(this.items);
+        // console.log(this.items);
     }
 }
 

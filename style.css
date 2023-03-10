@@ -1,0 +1,5 @@
+/* CSS styling for the checkmark */
+.checkmark::after {
+    content: '✓';
+    color: green;
+}
