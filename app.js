@@ -17,6 +17,7 @@ let list = {
     // Create a new child element for the delete (x) button
     let deleteBtnChild = document.createElement("span");
     deleteBtnChild.textContent = " Delete ";
+    deleteBtnChild.classList.add("btn");
     deleteBtnChild.classList.add("delete_btn");
 
     // Create a new child element for the checkmark
