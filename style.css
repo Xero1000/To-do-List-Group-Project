@@ -24,29 +24,18 @@ body {
 .checkmark::after {
   content: "✓";
   color: green;
+  margin-left: 1rem;
 }
-.checkmark {
-  border: 1px solid black;
-}
-li span {
+
+li span.delete_btn {
   color: red;
   font-weight: bold;
   margin-left: 2rem;
-  border: 1px solid red;
-  padding: 4px;
-  border-radius: 10px;
   cursor: pointer;
 }
-li > * {
-  display: inline-block;
+li {
+  margin: 10px 0;
 }
 ul {
   list-style-type: none;
-}
-li {
-  border: 2px green solid;
-}
-
-.line_through {
-  color: red;
 }
